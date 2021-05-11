@@ -1,12 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CALCULATOR</title>
+
+<!-- reset css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"/>
+    
+<style>
+/*****  
+Elementos reutilizables (colores, tipografías…)
+Comentarios generales...
+    
+*****/    
+    
+    
+/*****  TEST  
+    
+* { outline: 1px solid orange; } 
+    
+img[alt=""] { outline: 6px dashed orange; }
+img:not([alt]) { outline: 6px dashed red; }  
+
+*****/ 
+    
+    
+/*****  ESTRUCTURA *****/  
+    
+* { box-sizing: border-box; }
+    
+
+    
+/*****  TIPOGRAFIA *****/  
+    
+html { font-size: 40px;
+        font-family:Arial}    
+    
+    
+/*****  ESTETICA *****/  
+
+.circulo{
+    background-color: orange;
+    border-radius:50% ;
+    height: 200px;
+    width: 200px;
+}
+
+.container{
+    width: ;
+    display: grid;
+    grid-template-columns: repeat(4,auto);
+    grid-template-rows: (4,auto);
+}
+
+h1{
+    grid-column:1/5;
+
+}
+
+.input{
+    grid-row: 2/3;
+}
+
+.buttons{
+    grid-row: 3/4;
+}
+
+    
+/*****  MEDIA QUERIES *****/  
+
+    
+
+</style>
+
+    
+
+
+
 </head>
 <body>
+
     
+
+<div class="circulo">
+    <div class="container">
+        <h1>Calculadora</h1>
+            <div class="input">
+                <input type="number" id="numeroA" value="0">
+                <input type="number" id="numeroB" value="0">
+            </div>
+            <div class="buttons">
+                <button type="button" name="suma" id="suma" onclick="Calcular(1)">suma</button> 
+                <button type="button" name="resta" id="resta" onclick="Calcular(2)">resta</button> 
+                <button type="button" name="multiplicacion" id="multiplicacion" onclick="Calcular(3)">multiplicación</button>
+                <button type="button" name="division" id="division" onclick="Calcular(4)">división</button>
+            </div>
+            <div class="result">
+                <p id="resultado"></p>
+            </div>
+    </div> 
+</div>
+
+    
+    <script>
+
+
+
+function Calcular(operando){
+
+    var primerValor = parseInt(document.getElementById("numeroA").value);
+    var segundoValor = parseInt(document.getElementById("numeroB").value);
+    var result;
+    
+    AsignarVariables(); 
+    switch(operando){
+        case 1: 
+            result=primerValor+segundoValor;
+            break;
+        case 2: 
+            result=primerValor-segundoValor;
+            break;
+        case 3: 
+            result=primerValor*segundoValor;
+            break;
+        case 4: 
+            result=primerValor/segundoValor;
+            if(result===Infinity){
+                result="number \u221e. Impossible Operation";
+            }
+            break;
+    }
+    document.getElementById('resultado').innerHTML='el resultado es: '+result;
+}
+
+
+function AsignarVariables(){
+    primerValor = parseInt(document.getElementById("numeroA").value);
+    segundoValor = parseInt(document.getElementById("numeroB").value);
+
+}
+
+
+
+    </script>
 </body>
 </html>
